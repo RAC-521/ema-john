@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from '../../images/logo.png';
 import './Header.css';
+import logo from '../../images/logo.png';
 
 const Header = () => {
     return (
@@ -8,8 +8,8 @@ const Header = () => {
             <img src={logo} alt=""/>
             <nav>
                 <a href="/shop">Shop</a>
-                <a href="/order">Order review</a>
-                <a href="/manage">Manage inventory</a>
+                <a href="/review">Order review</a>
+                <a href="/inventory">Manage inventory</a>
             </nav>
         </div>
     );

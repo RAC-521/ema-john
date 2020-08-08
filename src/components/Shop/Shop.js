@@ -19,7 +19,7 @@ const Shop = () => {
                 <ul>
                     {
                         products.map(
-                            pd => <Product product={pd} addToCart={handleAddToCart}></Product>
+                            pd => <Product showAddToCart={true} product={pd} addToCart={handleAddToCart}></Product>
                         )
                     }
                 </ul>

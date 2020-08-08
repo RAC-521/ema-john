@@ -6,16 +6,16 @@
 }
 .header nav{
     background-color: black;
-    line-height: 40px;
+    line-height: 38px;
     font-size: 20px;
-    text-align: left;
+    text-align: center;
 }
-nav a{
+.header nav a{
     text-decoration: none;
     color: white;
     margin-right: 20px;
     padding: 5px;
 }
-nav a:hover{
+.header nav a:hover{
     background-color: grey;
 }
