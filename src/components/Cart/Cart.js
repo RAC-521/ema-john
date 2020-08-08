@@ -1,10 +1,11 @@
 import React from 'react';
 import './Cart.css';
+import { Link } from 'react-router-dom';
 
 const Cart = (props) => {
 
     const cart = props.cart;
-    const total = cart.reduce( (total, prd) => total + prd.price, 0);
+    const total = cart.reduce( (total, prd) => total + prd.price*prd.quantity, 0);
     /*ALTERNATIVE:
     let total=0;
     for(let i=0; i<cart.length; i++){
@@ -32,11 +33,15 @@ const Cart = (props) => {
         <div className='cart'>
             <h4 className='cart-header'>Order summary</h4>
             <p className='numOfItemsOrdered'>Items ordered: {cart.length}</p>
-            <p><small>Product price: {formatNumber(total)}</small></p>
-            <p><small>VAT: {formatNumber(VAT)}</small></p>
-            <p><small>Shipping cost: {shipping}</small></p>
-            <p><small>Total price: {formatNumber(total + shipping)}</small></p>
-            
+            <p><small>Product price: ${formatNumber(total)}</small></p>
+            <p><small>VAT: ${formatNumber(VAT)}</small></p>
+            <p><small>Shipping cost: ${shipping}</small></p>
+            <p><small>Total price: ${formatNumber(total + shipping)}</small></p>
+            <Link to='/review'> 
+                {props.showReview === true &&
+                    <button className="addToCartBtn">Review order</button>
+                }
+            </Link>
         </div>
     );
 };

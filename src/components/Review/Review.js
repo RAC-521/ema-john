@@ -1,10 +1,45 @@
 import React from 'react';
 import './Review.css';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { getDatabaseCart, removeFromDatabaseCart } from '../../utilities/databaseManager';
+import fakeData from '../../fakeData';
+import ReviewItem from '../ReviewItem/ReviewItem';
+import Cart from '../Cart/Cart';
 
 const Review = () => {
+    const [cart, setCart] = useState([]);
+
+    const handleRemoveItem = (productKey) => {
+        const newCart = cart.filter(pd => pd.key !== productKey);
+        setCart(newCart);
+        removeFromDatabaseCart(productKey);
+    }
+    
+    useEffect( () => {
+        const savedCart = getDatabaseCart();
+        const productKeys = Object.keys(savedCart);
+        const cartProducts = productKeys.map( key => {
+            const product = fakeData.find( pd => pd.key === key);
+            product.quantity = savedCart[key];
+            return product;
+        });
+        setCart(cartProducts);
+    }, [])
     return (
-        <div>
-            <h1>You can access this feature soon...</h1>
+        <div className='shop-container'>
+            <div className="product-container">
+                <h1>Number of items: {cart.length}</h1>
+                {
+                    cart.map( pd => <ReviewItem 
+                        key = {pd.key}
+                        removeItem = {handleRemoveItem}
+                        product={pd}></ReviewItem>)
+                }
+            </div>
+            <div className="cart-container">
+                <Cart cart={cart} showReview={false}></Cart>
+            </div>
         </div>
     );
 };

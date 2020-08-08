@@ -16,10 +16,13 @@ const Product = (props) => {
                 <p><small>by: {seller}</small></p>
                 <p>${price}</p>
                 <p><small>Only {stock} left in stock- order soon</small></p>
-                { props.showAddToCart === true &&
+                {props.showAddToCart === true &&
                     <button className="addToCartBtn" onClick={() => props.addToCart(props.product)}> 
-                    <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon> Add to cart
-                </button>
+                        <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon> Add to cart
+                    </button>
+                }
+                {props.showBack === true &&
+                    <Link to='/shop'> <button className='addToCartBtn'>Back</button> </Link>
                 }
             </div>
         </div>
