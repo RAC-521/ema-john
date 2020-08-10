@@ -45,20 +45,20 @@ const Shop = () => {
             <div className="product-container">
                 <ul>
                     {
-                        products.map(
-                            pd => <Product 
+                        products.map( pd => 
+                            <Product 
                             key={pd.key}
                             showAddToCart={true} 
                             showBack={false}
                             product={pd} 
-                            addToCart={handleAddToCart}>
+                            addToCart={handleAddToCart}>       
                             </Product>
                         )
                     }
                 </ul>
             </div>
             <div className="cart-container"> 
-                <Cart cart={cart} showReview={true} >
+                <Cart cart={cart} >
                     <Link to='/review'> 
                         <button className="addToCartBtn">Review order</button>
                     </Link>
